@@ -2,4 +2,8 @@ steps:
 # Docker Build
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 
-         'us-central1-docker.pkg.dev/$PROJECT_ID/myimage:$SHORT_SHA', '.']
+         'us-central1-docker.pkg.dev/$PROJECT_ID/goboss/myimage:$SHORT_SHA', '.']
+         
+# Docker push to Google Artifact Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/goboss/myimage:$SHORT_SHA']
