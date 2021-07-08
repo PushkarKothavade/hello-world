@@ -15,5 +15,12 @@
 #         '--region', 'us-central1', '--platform', 'managed']
 
 steps:
-- name: gcr.io/cloud-builders/pack
-  args: ["build", "--builder", "heroku/buildpacks:18", "gcr.io/cloud-builders/sample:tag"]
+- name: 'gcr.io/$PROJECT_ID/pack'
+  args:
+    - build
+    - --builder
+    - heroku/buildpacks:18
+    - gcr.io/$PROJECT_ID/pack-sample
+
+images:
+  - gcr.io/$PROJECT_ID/pack-sample
