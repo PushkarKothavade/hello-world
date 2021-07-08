@@ -1,4 +1,4 @@
-#steps:
+steps:
 # Docker Build
 #- name: 'gcr.io/cloud-builders/docker'
 #  args: ['build', '-t', 
@@ -14,13 +14,5 @@
 #         '--image=us-central1-docker.pkg.dev/$PROJECT_ID/goboss/myimage:$SHORT_SHA', 
 #         '--region', 'us-central1', '--platform', 'managed']
 
-steps:
-- name: 'gcr.io/$PROJECT_ID/pack'
-  args:
-    - build
-    - --builder
-    - heroku/buildpacks:18
-    - gcr.io/$PROJECT_ID/pack-sample
-
-images:
-  - gcr.io/$PROJECT_ID/pack-sample
+- name: pack
+  args: ["build", "--builder", "heroku/buildpacks:18", "gcr.io/$PROJECT_ID/mypack:tag"]
